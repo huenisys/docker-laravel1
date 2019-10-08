@@ -9,7 +9,8 @@ RUN apt update \
     && echo "UTC" > /etc/timezone \
     && dpkg-reconfigure -f noninteractive tzdata
 
-RUN apt install -y curl zip unzip git supervisor sqlite3 \
+RUN apt update \
+        && apt install -y curl zip unzip git supervisor sqlite3 \
         nginx php7.2-fpm php7.2-cli \
         php7.2-pgsql php7.2-sqlite3 php7.2-gd \
         php7.2-curl php7.2-memcached \
