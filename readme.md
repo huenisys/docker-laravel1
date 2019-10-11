@@ -12,8 +12,3 @@
 - $ ``docker run -d --rm -p 8080:80 -v $(pwd)/application:/var/www/html/public huenisys/docker-app:latest``
 
 ## notes
-
-```
-RUN ls -sf /dev/stdout /var/log/nginx/access.log \
-  && ln -sf /dev/stderr /var/log/nginx/error.log
-```
