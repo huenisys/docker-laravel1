@@ -1,0 +1,41 @@
+version: '3'
+services:
+  app:
+    build:
+      context: ./docker
+      dockerfile: ./docker/Dockerfile
+    image: huenisys/docker-app:latest
+    networks:
+      - appnet
+    volumes:
+      - ./application:/var/www/html
+    ports:
+      - ${APP_PORT}:80
+    working_dir: /var/www/html
+  cache:
+    image: redis:alpine
+    networks:
+      - appnet
+    volumes:
+      - cachedata:/data
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: laravel
+      MYSQL_USER: laravel
+      MYSQL_PASSWORD: secret
+    ports:
+      - ${DB_PORT}:3306
+    networks:
+      - appnet
+    volumes:
+      - dbdata:/var/lib/mysql
+networks:
+  appnet:
+    driver: bridge
+volumes:
+  dbdata:
+    driver: local
+  cachedata:
+    driver: local
