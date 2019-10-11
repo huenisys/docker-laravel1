@@ -2,8 +2,8 @@ version: '3'
 services:
   app:
     build:
-      context: ./docker
-      dockerfile: ./docker/Dockerfile
+      context: ./docker/app
+      dockerfile: ./docker/app/Dockerfile
     image: huenisys/docker-app:latest
     networks:
       - appnet
@@ -18,6 +18,17 @@ services:
       - appnet
     volumes:
       - cachedata:/data
+  nodejs:
+    build:
+      context: ./docker/nodejs
+      dockerfile: ./docker/nodejs/Dockerfile
+    image: huenisys/nodejs:latest
+    networks:
+      - appnet
+    volumes:
+      - ./application:/opt
+    working_dir: /opt
+    command: echo hi
   db:
     image: mysql:5.7
     environment:

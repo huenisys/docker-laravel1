@@ -2,7 +2,8 @@
 
 ## build
 
-- $ ``docker build -t huenisys/docker-app:latest -f docker/Dockerfile docker``
+- $ ``docker build -t huenisys/docker-app:latest -f docker/app/Dockerfile docker/app``
+- $ ``docker build -t huenisys/nodejs:latest -f docker/nodejs/Dockerfile docker/nodejs``
 
 ## runs
 
