@@ -1,3 +1,3 @@
 # readme
 
-- docker build -t huenisys/docker-app -f docker/Dockerfile application
+- $ ``docker build -t huenisys/docker-app:latest -f docker/Dockerfile docker``
