@@ -9,6 +9,9 @@
 - $ ``docker run --rm -it huenisys/docker-app:latest bash``
 - $ ``docker run -d --rm -p 8080:80 -v $(pwd)/application:/var/www/html/public huenisys/docker-app:latest nginx``
 - $ ``docker run -d --rm -p 8080:80 -v $(pwd)/application:/var/www/html/public huenisys/docker-app:latest supervisord``
+- $ ``docker run -d --rm -p 8080:80 -v $(pwd)/application:/var/www/html/public huenisys/docker-app:latest``
+
+## notes
 
 ```
 RUN ls -sf /dev/stdout /var/log/nginx/access.log \

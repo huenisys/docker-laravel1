@@ -28,4 +28,6 @@ RUN apt update \
 ADD default /etc/nginx/sites-available/default
 ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
+CMD ["supervisord"]
+
 
