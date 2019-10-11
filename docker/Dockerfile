@@ -26,5 +26,6 @@ RUN apt update \
   && echo "daemon off;" >> /etc/nginx/nginx.conf
 
 ADD default /etc/nginx/sites-available/default
+ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 
