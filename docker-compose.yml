@@ -2,13 +2,13 @@ version: '3'
 services:
   app:
     build:
-      context: ./docker/app
-      dockerfile: ./docker/app/Dockerfile
+      context: ./docker-laravel/app
+      dockerfile: ./docker-laravel/app/Dockerfile
     image: huenisys/app1:latest
     networks:
       - appnet
     volumes:
-      - .:/home/huenisys/application
+      - ./laravel:/home/huenisys/application
     ports:
       - ${APP_PORT}:80
     working_dir: /home/huenisys/application
@@ -20,17 +20,20 @@ services:
       - cachedata:/data
   nodejs:
     build:
-      context: ./docker/nodejs
-      dockerfile: ./docker/nodejs/Dockerfile
+      context: ./docker-laravel
+      dockerfile: ./docker-laravel/nodejs.Dockerfile
     image: huenisys/nodejs:latest
     networks:
       - appnet
     volumes:
-      - .:/home/node/application
+      - ./laravel:/home/node/application
     working_dir: /home/node/application
     command: bash -c "echo -n 'node version ' && node -v"
   db:
-    image: mysql:5.7
+    build:
+      context: ./docker-laravel
+      dockerfile: ./docker-laravel/db.Dockerfile
+    image: huenisys/db:latest
     environment:
       MYSQL_ROOT_PASSWORD: secret
       MYSQL_DATABASE: laravel
