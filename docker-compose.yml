@@ -3,8 +3,8 @@ services:
   app:
     build:
       context: ./docker-laravel/app
-      dockerfile: ./docker-laravel/app/Dockerfile
-    image: huenisys/app1:latest
+      dockerfile: ./docker-laravel/app/app1-laravel.Dockerfile
+    image: huenisys/app1-laravel:latest
     networks:
       - appnet
     volumes:
@@ -15,7 +15,10 @@ services:
       - ${APP_PORT}:80
     working_dir: /home/huenisys/application
   cache:
-    image: redis:alpine
+    build:
+      context: ./docker-laravel
+      dockerfile: ./docker-laravel/cache-laravel.Dockerfile
+    image: huenisys/cache-laravel:latest
     networks:
       - appnet
     volumes:
@@ -23,8 +26,8 @@ services:
   nodejs:
     build:
       context: ./docker-laravel
-      dockerfile: ./docker-laravel/nodejs.Dockerfile
-    image: huenisys/nodejs:latest
+      dockerfile: ./docker-laravel/nodejs-laravel.Dockerfile
+    image: huenisys/nodejs-laravel:latest
     networks:
       - appnet
     volumes:
@@ -34,8 +37,8 @@ services:
   db:
     build:
       context: ./docker-laravel
-      dockerfile: ./docker-laravel/db.Dockerfile
-    image: huenisys/db:latest
+      dockerfile: ./docker-laravel/db-laravel.Dockerfile
+    image: huenisys/db-laravel:latest
     environment:
       MYSQL_ROOT_PASSWORD: secret
       MYSQL_DATABASE: laravel
