@@ -50,6 +50,17 @@ services:
       - appnet
     volumes:
       - dbdata:/var/lib/mysql
+  logger:
+    image: gliderlabs/logspout:latest
+    ports:
+      - '5000:5000'
+    networks:
+      - appnet
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: 'syslog+tls://${PT_URL}:${PT_PORT}?filter.name=*_app_1'
+    environment:
+      SYSLOG_HOSTNAME: laravel1
 networks:
   appnet:
     driver: bridge
