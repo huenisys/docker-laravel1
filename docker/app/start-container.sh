@@ -15,5 +15,5 @@ if [ $# -gt 0 ]; then
   exec "$@"
 else
   # Otherwise start supervisord
-  /usr/bin/supervisord
+  sudo /usr/bin/supervisord
 fi

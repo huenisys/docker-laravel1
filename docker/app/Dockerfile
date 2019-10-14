@@ -5,6 +5,7 @@ LABEL maintainer="huenisys"
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt update \
+  && apt install -y sudo \
   && apt install -y gnupg tzdata \
   && echo "UTC" > /etc/timezone \
   && dpkg-reconfigure -f noninteractive tzdata
@@ -33,6 +34,16 @@ ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 ADD php-fpm.conf /etc/php/7.2/fpm/php-fpm.conf
 ADD start-container.sh /usr/bin/start-container
 RUN chmod +x /usr/bin/start-container
+
+RUN useradd -ms /bin/bash huenisys \
+  && usermod -aG www-data huenisys \
+  && usermod -aG sudo huenisys
+
+ADD sudoers /etc/sudoers
+
+USER huenisys
+RUN cd && mkdir application
+WORKDIR /home/huenisys/application
 
 ENTRYPOINT ["start-container"]
 
