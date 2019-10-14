@@ -59,8 +59,6 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     command: 'syslog+tls://${PT_URL}:${PT_PORT}?filter.name=*_app_1'
-    environment:
-      SYSLOG_HOSTNAME: laravel1
 networks:
   appnet:
     driver: bridge
