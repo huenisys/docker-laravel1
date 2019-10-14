@@ -26,9 +26,9 @@ services:
     networks:
       - appnet
     volumes:
-      - .:/opt
-    working_dir: /opt
-    command: echo hi
+      - .:/home/node/application
+    working_dir: /home/node/application
+    command: bash -c "echo -n 'node version ' && node -v"
   db:
     image: mysql:5.7
     environment:

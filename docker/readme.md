@@ -3,7 +3,6 @@
 ## build
 
 - $ ``docker build -t huenisys/docker-app:latest -f docker/app/Dockerfile docker/app``
-- $ ``docker build -t huenisys/nodejs:latest -f docker/nodejs/Dockerfile docker/nodejs``
 
 ## runs
 
@@ -16,6 +15,11 @@
 - prep the laravel app: $ ``docker run -it --rm --name=app --network=appnet -v $(pwd):/var/www/html -w /var/www/html huenisys/docker-app:latest composer create-project laravel/laravel application``
 - start app: $ ``docker run -d --rm --name=app --network=appnet -p 80:80 -v $(pwd)/application:/var/www/html huenisys/docker-app:latest``
 
+### nodejs
+
+- build: $ ``docker build -t huenisys/nodejs:latest -f docker/nodejs/Dockerfile docker/nodejs``
+- run: $``docker run -it --rm --name=nodejs -v $(pwd):/home/node/application huenisys/nodejs:latest bash``
+- run: $``docker-compose run nodejs bash``
 
 ## notes
 

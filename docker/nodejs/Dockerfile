@@ -9,3 +9,11 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
     && apt -y autoremove \
     && apt clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+USER node
+
+RUN mkdir /home/node/application
+
+WORKDIR /home/node/application
+
+CMD bash
