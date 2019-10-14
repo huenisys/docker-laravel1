@@ -1,4 +1,4 @@
-# docker-php-app1
+# docker-laravel1
 
 ## local dev
 
