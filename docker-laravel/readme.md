@@ -3,7 +3,7 @@
 ### app
 
 - build: $ ``docker build -t huenisys/app1:latest -f docker-laravel/app/Dockerfile docker-laravel/app``
-- run: $ ``docker run -it --rm --name=app -p 80:80 -v $(pwd)/laravel:/home/huenisys/application huenisys/app1:latest``
+- run: $ ``docker run -it --rm --name=app -p 80:80 -v $(pwd)/storage:/home/huenisys/application/storage -v $(pwd)/laravel:/home/huenisys/application huenisys/app1:latest``
 - run: $``docker-compose run app bash``
 
 ### db

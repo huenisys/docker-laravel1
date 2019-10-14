@@ -8,6 +8,7 @@ services:
     networks:
       - appnet
     volumes:
+      - ./storage:/home/huenisys/application/storage
       - ./laravel:/home/huenisys/application
     ports:
       - ${APP_PORT}:80

@@ -43,6 +43,7 @@ ADD sudoers /etc/sudoers
 
 USER huenisys
 RUN cd && mkdir application
+VOLUME /home/huenisys/application/storage
 WORKDIR /home/huenisys/application
 
 ENTRYPOINT ["start-container"]

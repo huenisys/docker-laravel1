@@ -1,5 +1,7 @@
 # docker-php-app1
 
+- $ ``cp .env.example .env``
+
 ## docker-compose
 
 - add as alias
