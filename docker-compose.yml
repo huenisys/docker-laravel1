@@ -8,8 +8,9 @@ services:
     networks:
       - appnet
     volumes:
-      - ./storage:/home/huenisys/application/storage
-      - ./laravel:/home/huenisys/application
+      - ${PWD}/persistence/storage:/home/huenisys/application/storage
+      - ${PWD}/laravel:/home/huenisys/application
+      - ${PWD}/persistence/.env:/home/huenisys/application/.env
     ports:
       - ${APP_PORT}:80
     working_dir: /home/huenisys/application
