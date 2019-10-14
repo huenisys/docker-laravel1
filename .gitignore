@@ -1,2 +1,3 @@
 /.env
-/persistence
+/persistence/storage/*.key
+/persistence/.env

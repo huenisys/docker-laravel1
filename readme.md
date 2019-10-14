@@ -1,8 +1,12 @@
 # docker-php-app1
 
-- $ ``cp .env.example .env``
+## local dev
 
-## docker-compose
+- add docker compose alias below
+- setup persistence folder
+- $ ``cp $(pwd)/laravel/.env.example $(pwd)/persistence/.env``
+
+## docker-compose alias
 
 - add as alias
     ```
