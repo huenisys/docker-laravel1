@@ -2,8 +2,8 @@ version: '3'
 services:
   app:
     build:
-      context: ./docker-laravel/app
-      dockerfile: ./docker-laravel/app/app1-laravel.Dockerfile
+      context: ${PWD}/docker-laravel/app
+      dockerfile: ${PWD}/docker-laravel/app/app1-laravel.Dockerfile
     image: huenisys/app1-laravel:latest
     networks:
       - appnet
@@ -16,8 +16,8 @@ services:
     working_dir: /home/huenisys/application
   cache:
     build:
-      context: ./docker-laravel
-      dockerfile: ./docker-laravel/cache-laravel.Dockerfile
+      context: ${PWD}/docker-laravel
+      dockerfile: ${PWD}/docker-laravel/cache-laravel.Dockerfile
     image: huenisys/cache-laravel:latest
     networks:
       - appnet
@@ -25,19 +25,19 @@ services:
       - cachedata:/data
   nodejs:
     build:
-      context: ./docker-laravel
-      dockerfile: ./docker-laravel/nodejs-laravel.Dockerfile
+      context: ${PWD}/docker-laravel
+      dockerfile: ${PWD}/docker-laravel/nodejs-laravel.Dockerfile
     image: huenisys/nodejs-laravel:latest
     networks:
       - appnet
     volumes:
-      - ./laravel:/home/node/application
+      - ${PWD}/laravel:/home/node/application
     working_dir: /home/node/application
     command: bash -c "echo -n 'node version ' && node -v"
   db:
     build:
-      context: ./docker-laravel
-      dockerfile: ./docker-laravel/db-laravel.Dockerfile
+      context: ${PWD}/docker-laravel
+      dockerfile: ${PWD}/docker-laravel/db-laravel.Dockerfile
     image: huenisys/db-laravel:latest
     environment:
       MYSQL_ROOT_PASSWORD: secret
